@@ -1,0 +1,588 @@
+\section{Statements}
+
+\subsection{Series}
+
+\subsubsection{The Cauchy criterion for series (Claim 1.2)}
+
+Let \(\sum_{n = 1}^{\infty} a_n\) be a series
+
+Then:
+
+\[
+    \left( \sum_{n = 1}^{\infty}a_n \text{converges} \right) \Leftrightarrow \left( \forall \varepsilon > 0 \exists N\left( \varepsilon \right) \in \mathbb{N}: \forall m, n \in \mathbb{N}: m \geq N\left( \varepsilon \right) \Rightarrow\left| \sum_{n = m + 1}^{m + k} a_n \right| < \varepsilon \right)
+\]
+
+Proof:
+
+\begin{gather*}
+    \left( \sum_{n = 1}^{\infty}a_n \text{converges} \right)\\
+    \left( \exists \lim_{N \rightarrow + \infty} A_N \right) \Leftrightarrow \left( \forall \varepsilon > 0 \exists N\left( \varepsilon\right) \in \mathbb{N} : \forall m, k \in \mathbb{N}: m \geq N\left( \varepsilon \right) \Rightarrow\left| A_{m + k} - A_m \right| < \varepsilon \right)
+\end{gather*}
+
+Since:
+\[
+    A_{m + k} - A_m = \left( a_1 + \dots + a_{m + k} \right) - \left( a_1 + \dots + a_m \right) = a_{m + 1} + \dots + a_{m + k} = \sum_{n = m + 1}^{m + k} a_n
+\]
+
+the Claim is proved
+
+\subsubsection{The negation of the Cauchy criterion for series (Claim 1.3)}
+
+Let \(\sum_{n=1}^{\infty} a_n\) be a series. Then
+
+\[
+    \left(\sum_{n=1}^{\infty} a_n \text { diverges }\right) \Leftrightarrow \left(\exists \varepsilon>0: \forall N \in \mathbb{N} \quad \exists m \geqslant N \quad \exists k \in \mathbb{N}:\left|\sum_{n=m+1}^{m+k} a_n\right| \geqslant \varepsilon\right)
+\]
+
+Proof:
+
+exercise (or you can say that it follows directly from Claim 2)
+
+\subsubsection{The necessary condition for convergence (Claim 1.5)}
+
+Let \(\sum_{n=1}^{\infty} a_n\) be a series.
+Then \(\left(\sum_{n=1}^{\infty} a_n\right.\) converges \() \Rightarrow\left(\lim _{n \rightarrow+\infty} a_n=0\right)\)
+Note that Claim 4.2 shows that the converse does not hold (indeed, \(\lim _{n \rightarrow+\infty} \frac{1}{n}=0\) but \(\sum_{n=1}^{\infty} \frac{1}{4}\) diverges).
+
+Proof
+
+Follows directly from Claim 2 if we set \(k=1\).
+
+\subsubsection{The grouping theorem (Claim 1.9)}
+
+Let
+
+\begin{enumerate}
+    \item \(\sum_{n = 1}^{\infty} a_n\) be a series
+    \item Let \(\left\{ k_n \right\}_{n = 1}^{\infty}\) be a sequence of positive integers such that \(k_1 = 1\) and \(k_i < k_{i + 1} \forall i \in \left\{ 1, 2, \dots \right\}\)
+    \item \(\sum_{n = 1}^{\infty} b_n\), where \(b_n = a_{k_n} + \dots + a_{k_{n+1}-1}, \forall n \in \mathbb{N}\) be a grouped series
+\end{enumerate}
+
+Then:
+
+\begin{enumerate}
+    \item
+    \[
+        \sum_{n = 1}^{\infty} a_n = \alpha \in \mathbb{R} \Rightarrow \sum_{n = 1}^{\infty} b_n = \alpha
+    \]
+    \item
+    $\begin{pmatrix}
+         \lim_{n \rightarrow + \infty} a_n = 0                                  \\
+         \exists m \in \mathbb{N} \forall n \in \mathbb{N}: K_{n + 1} - K_n < m \\
+         \sum_{n = 1}^{\infty} b_n = b \in \mathbb{R}
+    \end{pmatrix}$ \(\Rightarrow\)
+    $\begin{pmatrix}
+         \sum_{n = 1}^{\infty} a_n = b
+    \end{pmatrix}$
+\end{enumerate}
+
+\subsubsection{The Cauchy condensation test (Claim 2.3)}
+
+Let \(\left\{ a_k \right\}_{k = 1}^{\infty}\) be a sequence such that
+\begin{enumerate}
+    \item \(a_k \geq 0 \forall k \in \mathbb{N} \)
+    \item \(a_{k + 1} \leq a_k \forall k \in \mathbb{N} \)
+\end{enumerate}
+
+Then:
+
+\[
+    \left( \sum_{k = 1}^{\infty} a_k \text{ converges} \right) \Leftrightarrow \left( \sum_{k = 0}^{\infty}2^k a_{2^k} \text{ converges} \right)
+\]
+
+Proof:
+
+Since \(a_{k + 1} \leq a_k\), for every \(k \in \mathbb{N} \cup \alpha \circ y\) we have
+
+\begin{gather*}
+    a_2 \leq a_2 \leq a_1 \\
+    2a_4 \leq a_3 + a_4 \leq 2a_2 \\
+    4a_8 \leq a_5 + a_6 \leq 2a_2 \\
+    \dots \\
+    2^n a_{2^{n+1}} \leq a_{2^n+1} + \dots + a_{2^{n + 1}} \leq 2^n a_{2^n}
+\end{gather*}
+
+By adding these inequalities, we obtain the inequality:
+
+\[
+    a_2 + 2a_4 + 4a_8 + \dots + 2^n a_{2^{n + 1}} \leq \sum_{k = 1}^{2^{n + 1}}a_k \leq a_1 + 2a_2 + 4a_4 + \dots + 2^n a_{2^n}
+\]
+
+Let \(S_n = a_1 + 2a_2 + 4a_4 + \dots + 2^n a_{2^n}\) ne the $n$-th partial sum of the condensed series \(\sum_{k = 0}^{\infty}2^k a_{2^k}\)
+
+Then Inequality 2.1 can be rewritten as
+
+\[
+    \frac{1}{2} \left( S_{n + 1} - a_1 \right) \leq A_{2^{n + 1}} - a_1 \leq S_n
+\]
+
+Since sequences \(\left\{ A_n \right\}_{n = 1}^{\infty}\) and \(\left\{ S_n \right\}_{n = 1}^{\infty}\) are non-decreasing, Inequality 2.2 implies that
+
+\begin{gather*}
+    \left( \left\{ A_n \right\}_{n = 1}^{\infty} \text{ is bounded} \right) \Leftrightarrow \left( \left\{ S_n \right\}_{n = 1}^{\infty} \text{ is bounded} \right) \\
+    \text{By using claim 2.2} \\
+    \left( \sum_{k = 1}^{\infty} a_k \text{ converges} \right), \left( \sum_{k = 1}^{\infty} 2^k a_{2^k} \text{ converges} \right)
+\end{gather*}
+
+\subsubsection{The first comparison test (Claim 2.4)}
+
+Let $\{a_k\}_{k=1}^\infty$ and $\{b_k\}_{k=1}^\infty$ be two sequences such that:
+\[
+    0 \leq a_k \leq b_k \quad \text{for all } k \in \mathbb{N}.
+\]
+
+Then the following implications hold:
+\begin{enumerate}[label=(\arabic*)]
+    \item If $\sum_{k=1}^\infty b_k$ converges, then $\sum_{k=1}^\infty a_k$ also converges:
+    \[
+        \left( \sum_{k=1}^\infty b_k \text{ converges} \right)
+        \implies
+        \left( \sum_{k=1}^\infty a_k \text{ converges} \right).
+    \]
+
+    \item If $\sum_{k=1}^\infty a_k$ diverges, then $\sum_{k=1}^\infty b_k$ also diverges:
+    \[
+        \left( \sum_{k=1}^\infty a_k \text{ diverges} \right)
+        \implies
+        \left( \sum_{k=1}^\infty b_k \text{ diverges} \right).
+    \]
+\end{enumerate}
+
+\subsubsection{The second comparison test (Claim 2.5)}
+
+
+Let $\{a_k\}_{k=1}^\infty$ and $\{b_k\}_{k=1}^\infty$ be two sequences such that:
+\begin{enumerate}[label=(\alph*)]
+    \item $a_k > 0, \, b_k > 0 \quad (\forall k \in \mathbb{N})$.
+    \item $\exists m > 0, \, \exists M > 0 : \forall n \in \mathbb{N}, \quad m \leq \frac{a_n}{b_n} \leq M$.
+\end{enumerate}
+
+Then:
+\[
+    \left( \sum_{k=1}^\infty a_k \text{ converges} \right)
+    \iff
+    \left( \sum_{n=1}^\infty b_n \text{ converges} \right).
+\]
+
+\subsubsection{p-Series convergence (Claim 2.7)}
+
+
+The series
+\[
+    \sum_{k=1}^\infty \frac{1}{k^p},
+\]
+where $p \in \mathbb{R}$, is called the \textbf{p-series} and converges if and only if $p > 1$.
+
+\subsubsection{The integral test (Claim 2.8)}
+
+
+Let $f : [1, \infty) \to \mathbb{R}$ be a positive, nonincreasing, continuous function. Then:
+\[
+    \left( \sum_{k=1}^\infty f(k) \text{ converges} \right)
+    \iff
+    \left( \int_1^\infty f(x) \, dx \text{ converges} \right).
+\]
+
+\textbf{Note:} In general,
+\[
+    \sum_{k=1}^\infty f(k) \neq \int_1^\infty f(x) \, dx.
+\]
+
+\subsubsection{The root test (Claim 2.9)}
+
+Let $a_k \geq 0 \quad \forall k \in \mathbb{N}$. Then:
+\begin{enumerate}[label=(\arabic*)]
+    \item If
+    \[
+        \lim_{k \to \infty} \sqrt[k]{a_k} < 1,
+    \]
+    then
+    \[
+        \sum_{k=1}^\infty a_k \text{ converges.}
+    \]
+
+    \item If
+    \[
+        \lim_{k \to \infty} \sqrt[k]{a_k} > 1,
+    \]
+    then
+    \[
+        \sum_{k=1}^\infty a_k \text{ diverges.}
+    \]
+\end{enumerate}
+
+
+\subsubsection*{Definitions:}
+Let $\{b_k\}_{k=1}^\infty \subset \mathbb{R}$ be a sequence. Then:
+\begin{itemize}
+    \item $\limsup_{k \to \infty} b_k = \lim_{k \to \infty} (\sup b_k)$ is called the \textbf{upper limit} of $\{b_k\}$.
+    \item $\liminf_{k \to \infty} b_k = \lim_{k \to \infty} (\inf b_k)$ is called the \textbf{lower limit} of $\{b_k\}$.
+\end{itemize}
+
+\subsubsection{The ratio test (Claim 2.11)}
+
+
+Let $a_k > 0 \quad \forall k \in \mathbb{N}$. Then:
+\begin{enumerate}[label=(\arabic*)]
+    \item If
+    \[
+        \lim_{k \to \infty} \frac{a_{k+1}}{a_k} < 1,
+    \]
+    then
+    \[
+        \sum_{k=1}^\infty a_k \text{ converges.}
+    \]
+
+    \item If
+    \[
+        \lim_{k \to \infty} \frac{a_{k+1}}{a_k} > 1,
+    \]
+    then
+    \[
+        \sum_{k=1}^\infty a_k \text{ diverges.}
+    \]
+\end{enumerate}
+
+\subsubsection{The Bertrand test (Claim 2.14)}
+
+
+Let $a_k > 0 \quad \forall k \in \mathbb{N}$. Let
+\[
+    \lim_{k \to \infty} \ln(k) \cdot \left( k \cdot \left( \frac{a_k}{a_{k+1}} - 1 \right) - 1 \right) = B \in [-\infty, \infty].
+\]
+(Note: If $B = \infty$, the test is still valid.)
+
+Then:
+\begin{enumerate}[label=(\arabic*)]
+    \item If $B > 1$, then $\sum_{k=1}^\infty a_k$ converges.
+    \item If $B < 1$, then $\sum_{k=1}^\infty a_k$ diverges.
+\end{enumerate}
+
+\subsubsection{The Gauss test (Claim 2.15)}
+
+
+Let:
+\begin{enumerate}[label=(\alph*)]
+    \item $a_k > 0 \quad \forall k \in \mathbb{N}$,
+    \item $\exists \lambda > 0, \, \mu \in \mathbb{R} : \forall k \in \mathbb{N}, \quad
+    \frac{a_k}{a_{k+1}} = \lambda + \frac{\mu}{k} + \frac{\gamma_k}{k^2},$
+    where the sequence $\{\gamma_k\}_{k=1}^\infty$ is bounded.
+\end{enumerate}
+
+Then:
+\begin{enumerate}[label=(\arabic*)]
+    \item If $\lambda > 1$ or $(\lambda = 1 \text{ and } \mu > 1)$, then $\sum_{k=1}^\infty a_k$ converges.
+    \item If $\lambda < 1$ or $(\lambda = 1 \text{ and } \mu \leq 1)$, then $\sum_{k=1}^\infty a_k$ diverges.
+\end{enumerate}
+
+\subsubsection{The Dirichlet Test (Claim 3.2)}
+
+
+Let $\{a_i\}_{i=1}^\infty$ and $\{b_i\}_{i=1}^\infty$ be two sequences of real numbers satisfying the following conditions:
+\begin{enumerate}[label=(\alph*)]
+    \item $\exists M > 0 : \forall n \in \mathbb{N} \implies \left| \sum_{i=1}^n a_i \right| \leq M$.
+    \item $\{b_i\}_{i=1}^\infty$ is monotonic
+    (i.e., either $b_i \geq b_{i+1} \, \forall i \in \mathbb{N}$ or $b_i \leq b_{i+1} \, \forall i \in \mathbb{N}$).
+    \item $\lim_{i \to \infty} b_i = 0$.
+\end{enumerate}
+
+Then, the series $\sum_{i=1}^\infty a_i b_i$ converges.
+
+\subsubsection{The Abel test (Claim 3.3)}
+
+
+Let $\{a_i\}_{i=1}^\infty$ and $\{b_i\}_{i=1}^\infty$ be two sequences of real numbers satisfying the following conditions:
+\begin{enumerate}[label=(\alph*)]
+    \item $\sum_{i=1}^\infty a_i$ converges.
+    \item $\{b_i\}_{i=1}^\infty$ is monotonic
+    (i.e., either $b_i \geq b_{i+1} \, \forall i \in \mathbb{N}$ or $b_i \leq b_{i+1} \, \forall i \in \mathbb{N}$).
+    \item $\{b_i\}_{i=1}^\infty$ is bounded
+    (i.e., $\exists B > 0 : \forall i \in \mathbb{N}, \, |b_i| \leq B$).
+\end{enumerate}
+
+Then, the series $\sum_{i=1}^\infty a_i b_i$ converges.
+
+\subsubsection{The Leibniz test (Claim 3.4; you need to state both items)}
+
+
+Let $\{b_i\}_{i=1}^\infty$ be a sequence of real numbers satisfying the following conditions:
+\begin{enumerate}[label=(\alph*)]
+    \item $\{b_i\}_{i=1}^\infty$ is nonincreasing
+    (i.e., $b_i \geq b_{i+1} \, \forall i \in \mathbb{N}$).
+    \item $\lim_{i \to \infty} b_i = 0$.
+\end{enumerate}
+
+Then:
+\begin{enumerate}[label=(\arabic*)]
+    \item The series $\sum_{i=1}^\infty (-1)^{i+1} b_i$ converges.
+    \item $\left| \sum_{i=1}^n (-1)^{i+1} b_i \right| \leq b_1, \quad \forall n \in \mathbb{N}$.
+\end{enumerate}
+
+\subsubsection{Alternating p-series convergence (Claim 3.8)}
+
+
+The series
+\[
+    \sum_{k=1}^\infty \frac{(-1)^{k+1}}{k^p}
+\]
+satisfies the following:
+\begin{enumerate}[label=(\arabic*)]
+    \item Converges absolutely if $p > 1$.
+    \item Converges conditionally if $0 < p \leq 1$.
+    \item Diverges if $p \leq 0$.
+\end{enumerate}
+
+\subsubsection{The Cauchy rearrangement theorem (Claim 3.9)}
+
+
+Let $\sum_{k=1}^\infty a_k$ be an absolutely convergent series. Then, for any permutation $\tau : \mathbb{N} \to \mathbb{N}$, we have:
+\[
+    \sum_{k=1}^\infty a_{\tau(k)} = \sum_{k=1}^\infty a_k.
+\]
+
+\subsubsection{The Riemann rearrangement theorem (Claim 3.11)}
+
+
+Let $\sum_{k=1}^\infty a_k$ be a conditionally convergent series. Then, for any $\alpha \in \mathbb{R}$, there exists a permutation $\tau : \mathbb{N} \to \mathbb{N}$ such that:
+\[
+    \sum_{k=1}^\infty a_{\tau(k)} = \alpha.
+\]
+
+\subsubsection{The Mertens theorem (Claim 4.1)}
+
+
+Let $\sum_{k=1}^\infty a_k$ and $\sum_{k=1}^\infty b_k$ be two convergent series with sums $\alpha$ and $\beta$, respectively. If \textbf{at least one} of them converges absolutely, then their Cauchy product (see Definition 4.1) is convergent to $\alpha \cdot \beta$.
+
+\textit{That is, the implication holds true if at least one of the series is absolutely convergent.}
+
+\subsubsection{The Abel theorem on the Cauchy product (Claim 4.2)}
+
+
+Let $\sum_{k=1}^\infty a_k$ and $\sum_{k=1}^\infty b_k$ be two convergent series with sums $a$ and $b$, respectively. If their Cauchy product $\sum_{k=1}^\infty c_k$ (see Definition 4.1) is a convergent series, then:
+\[
+    \sum_{k=1}^\infty c_k = a \cdot b.
+\]
+
+\subsubsection{The Abel theorem on series products (Claim 4.3)}
+
+
+
+Let $\sum_{k=1}^\infty a_k$ and $\sum_{k=1}^\infty b_k$ be two \textbf{absolutely convergent} series with sums $a$ and $b$, respectively. Then, for every bijection $\tau : \mathbb{N} \to \mathbb{N}^2$, $i \mapsto (n_i, m_i)$, we have:
+\[
+    \left( \sum_{k=1}^\infty a_k \right) \cdot \left( \sum_{k=1}^\infty b_k \right) = \sum_{i=1}^\infty a_{n_i} b_{m_i} = a \cdot b.
+\]
+
+\subsubsection{The Wallis formula (Claim 4.5)}
+
+
+Let
+\[
+    P_n = \prod_{k=1}^n \frac{(2k)^2}{(2k)^2 - 1}, \quad \forall n \in \mathbb{N}.
+\]
+Then:
+\[
+    \lim_{n \to \infty} P_n = \frac{\pi}{2}.
+\]
+
+\subsubsection{The Stirling formula (Claim 4.7)}
+
+
+The following limit holds:
+\[
+    \lim_{n \to \infty} \frac{n!}{\sqrt{2 \pi n} \left( \frac{n}{e} \right)^n} = 1.
+\]
+Equivalently:
+\[
+    n! \sim \sqrt{2 \pi n} \left( \frac{n}{e} \right)^n, \quad n \to \infty.
+\]
+\textit{Note:}
+\[
+    \lim_{n \to \infty} \left( n! - \sqrt{2 \pi n} \left( \frac{n}{e} \right)^n \right) = +\infty.
+\]
+
+\subsubsection{The Robbins formula (Claim 4.8)}
+
+
+For all $n \in \mathbb{N}$, we have:
+\[
+    \sqrt{2 \pi n} \left( \frac{n}{e} \right)^n e^{\frac{1}{12n+1}} < n! < \sqrt{2 \pi n} \left( \frac{n}{e} \right)^n e^{\frac{1}{12n}}.
+\]
+
+
+\clearpage
+
+\subsection{Functional sequences and series}
+
+\subsubsection{Relation between uniform and pointwise convergence (Claim 5.3)}
+
+
+Let $E \subseteq \mathbb{R}$, and let $f_n : E \to \mathbb{R}$, $n \in \mathbb{N}$.
+
+Then
+\[
+    (f_n \xrightarrow{\text{uniform}} f) \implies (f_n \xrightarrow{\text{pointwise}} f)
+\]
+
+That is, if the sequence $\{f_n(x)\}_{n=1}^\infty$ converges uniformly to $f(x)$ on $E$, then it converges pointwise to $f(x)$ on $E$. Note that the converse does not hold true in general.
+
+Proof:
+
+The statement follows directly from Def 5.2 and Def 5.3
+
+\begin{gather*}
+    \left( f_n \xrightarrow{E} f \right) \\
+    \Updownarrow \\
+    \left( \forall \varepsilon > 0 \exists N\left( \varepsilon \right) \in \mathbb{N}: \forall n \geq N\left( \varepsilon \right) \forall x \in E \rightarrow \left| f_n \left( x\right) - f\left( x\right) \right| < \varepsilon \right) \\
+    \Downarrow \\
+    \left(\forall \varepsilon > 0 \forall x \in E \exists N(\varepsilon, x) \in \mathbb{N}: \forall n \geq N(\varepsilon, x) \rightarrow \left|f_n(x)-f(x)\right|<\varepsilon\right) \\
+    \Updownarrow \\
+    \left( f_n \xrightarrow{E} f \right)
+\end{gather*}
+
+Let
+\begin{gather*}
+    f_n\left( x \right) =
+    \begin{cases}
+        1, x \in \left[ n; n + 1 \right] \\
+        0, x \in \mathbb{R} / \left[ n; n + 1 \right]
+    \end{cases} \\
+    f\left( x \right) = 0 \forall x \in \mathbb{R} \\
+    E = \mathbb{R}
+\end{gather*}
+
+Then \(\forall x \in \mathbb{R}: \lim_{n \rightarrow \infty} f_n \left( x \right) = 0 = f\left( x \right) \). That is, due to Def 5.2, \(f_n \xrightarrow{\mathbb{R}} f\). Since \(\sup_{x \in \mathbb{R}}\left| f_n\left( x \right) - f\left( x \right) \right| = 1\), we have \( \lim_{n \rightarrow \infty} \left( \sup_{x \in \mathbb{R}} \left| f_n \left( x\right) - f\left( x\right) \right| \right) = 1 \ne 0\)
+
+Therefore due to Def 5.3, \(f_n \not\rightrightarrows f\)
+
+\subsubsection{The Cauchy criterion for the uniform convergence (Claim 5.4)}
+
+Let \(E \subseteq \mathbb{R}\), and \(f_n: E \rightarrow \mathbb{R}\), \(n \in \mathbb{N}\). Then:
+\begin{gather*}
+    \left( f_n \rightrightarrows f \right) \\
+    \Updownarrow \\
+    \left( \forall \varepsilon 0 \exists N \left( \varepsilon \right) \in \mathbb{N}: \forall k \geq N\left( \varepsilon \right) \forall m \geq N \left( \varepsilon \right) \forall x \in E \rightarrow \left| f_m\left( x \right) - f_k\left( x \right) \right| < \varepsilon \right)
+    \Updownarrow \\
+    \left( \forall \varepsilon 0 \exists N \left( \varepsilon \right) \in \mathbb{N}: \forall m \geq N\left( \varepsilon \right) \forall p \geq N \left( \varepsilon \right) \forall x \in E \rightarrow \left| f_{m + p}\left( x \right) - f_m\left( x \right) \right| < \varepsilon \right)
+\end{gather*}
+
+Proof:
+
+Note that \(\left( f_n \rightrightarrows f \right)\)
+
+\[
+    \left( \forall \varepsilon > 0 \exists N_1(\varepsilon): \forall n \geq N_1(\varepsilon) \forall x \in E \rightarrow \left| f_n(x) \rightarrow f(x) \right| < \frac{\varepsilon}{2} \right)
+\]
+
+Let \(N(\varepsilon) = N_1(\varepsilon)\) in Formula 3
+
+Then, for \(\forall k \geq N(\varepsilon) \forall m \geq N(\varepsilon) \forall x \in E \), we have:
+
+\begin{gather*}
+    \left| f_m(x) - f_k(x) \right| = \left| f_m(x) - f(x) + f(x) - f_k(x) \right| \Rightarrow \left| f_m(x) - f(x) \right| + \left| f_k(x) - f_k(x) \right| \Rightarrow \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon\\
+    \left(\forall \varepsilon>0 \exists N(\varepsilon) \in \mathbb{N}: \forall k \geqslant N(\varepsilon) \forall m \geqslant N(\varepsilon) \forall x \in E \rightarrow\left|f_m(x)-f_k(x)\right|<\varepsilon\right) \\
+    \Downarrow \\
+    \left(\forall x \in E \underset{\varepsilon}{\forall}>0 \exists N(\varepsilon, x) \in \mathbb{N}: \forall k \geqslant N(\varepsilon, x) \forall m \geqslant N(\varepsilon, x) \rightarrow\left|f_m(x)-f_k(x)\right|<\varepsilon\right) \\
+    \left(\forall x \in E \rightarrow \exists \lim _{n \rightarrow \infty} f_n(x)\right) \\
+    \text {Therefore, we can define } f: E \rightarrow \mathbb{R} \text { as } \\
+    f(x) \stackrel{\operatorname{def}}{=} \lim _{n \rightarrow \infty} f_n(x), \quad \forall x \in E
+\end{gather*}
+
+Thus, we can proved that \(f_n \xrightarrow{E} f\)
+
+Now, it in Formula 3 we take the limit \(k \rightarrow \infty\), we will receive Formula 2 from Def 5.3:
+
+\[
+    \forall \varepsilon > 0 \exists N(\varepsilon) \in \mathbb{N}: \forall m \geq N(\varepsilon) \forall x \in E \rightarrow \left| f_m(x) - f(x) \right| \leq \varepsilon
+\]
+
+Therefore, due to Def 5.3, \(f_n \rightrightarrows f \)
+
+\subsubsection{The necessary condition for the uniform convergence (Claim 5.6)}
+
+Let \(E \subseteq \mathbb{R}\), \(u_k: E \rightarrow \mathbb{R}\), \(k \in \mathbb{N}\), and \(f_n(x) = \sum_{k = 1}^{n}u_k(x)\), \(n \in \mathbb{N}\)
+
+Then
+
+\[
+    \left( f_n \rightrightarrows f \right) \Rightarrow \left( u_k \rightrightarrows 0 \right)
+\]
+
+Proof:
+
+\begin{gather*}
+    \left( f_n \rightrightarrows f \right) \\
+    \Downarrow \\
+    \left( \forall \varepsilon>0 \exists N(\varepsilon) \in \mathbb{N}: \forall m \geqslant N(\varepsilon) \forall x \in E \rightarrow \left| f_m(x) - f_{m - 1}(x) \right| < \varepsilon \right) \\
+    \Updownarrow \\
+    \left(\forall \varepsilon>0 \exists N(\varepsilon) \in \mathbb{N}: \forall m \geqslant N(\varepsilon) \forall x \in E \rightarrow\left|u_m(x)-0\right|<\varepsilon\right)
+    \Updownarrow \\
+    \left( u_k \rightrightarrows 0 \right)
+\end{gather*}
+
+Note thant the necessary condition (Claim 5.6) is not sufficient. It cannot even guarantee the pointwire convergence:
+
+Let \(E=(0 ; 1)\), and \(u_k(x)=\frac{1}{k+x}\).
+
+Then \(u_k(x) \rightrightarrows 0\) but the series \(\sum_{k=1}^{\infty} \frac{1}{k+x}\) is divergent for every \(x \in E=(0 ; 1)\).
+
+\subsubsection{The Weierstrass M-test (Claim 5.7)}
+
+\subsubsection{The Dirichlet test for the uniform convergence (Claim 5.8)}
+
+\subsubsection{The Abel test for the uniform convergence (Claim 5.9)}
+
+\subsubsection{The theorem on continuity of a limit function (Claim 6.2)}
+
+\subsubsection{The Riemann integrability of a limit function (Claim 6.4)}
+
+\subsubsection{The theorem on integration of a uniformly convergent sequence (Claim 6.5)}
+
+\subsubsection{The theorem on differentiation of a limit function (Claim 6.10)}
+
+\subsubsection{The theorem on continuity of a series (Claim 6.11)}
+
+\subsubsection{The theorem on term-by-term integration of a uniformly convergent series (Claim 6.12)}
+
+\subsubsection{The theorem on term-by-term differentiation of a series (Claim 6.13)}
+
+\subsubsection{The Stone-Weierstrass theorem (Claim 6.14)}
+
+\subsubsection{The theorem on radius of convergence of a power series (Claim 7.1)}
+
+\subsubsection{The Cauchy-Hadamard formula (Claim 7.2)}
+
+\subsubsection{The theorem on the uniform convergence of power series (Claim 7.3)}
+
+\subsubsection{The theorem on derivative of power series (Claim 7.5)}
+
+\subsubsection{The theorem on antiderivative of power series (Claim 7.7)}
+
+\subsubsection{The theorem on equality of power series (Claim 7.8)}
+
+\subsubsection{Criteria for analyticity (Claim 8.4)}
+
+\subsubsection{The Borel lemma (Claim 8.6)}
+
+\subsubsection{Pathological examples of smooth functions (Claims 8.2 and 8.7)}
+
+\clearpage
+
+\subsection{Multiple Riemann Integral}
+
+\subsubsection{Examples of sets of the Lebesgue measure zero (Claim 9.1)}
+
+\subsubsection{The Lebesgue criterion for Riemann integrability (for intervals) (Claim 9.2)}
+
+\subsubsection{Many properties of the Darboux sums (Claim 9.3)}
+
+\subsubsection{The Darboux theorem (Claim 9.4)}
+
+\subsubsection{Necessary condition for Riemann integrability (Claim 9.5)}
+
+\subsubsection{The Darboux criterion for Riemann integrability (for intervals) (Claim 9.6)}
+
+\subsubsection{Main properties of the multiple Riemann integral over an admissible set (list any three of your choice from Lecture 10)}
+
+\subsubsection{The Fubini theorem (for intervals) (Lecture 11)}
+
+\clearpage

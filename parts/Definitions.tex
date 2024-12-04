@@ -1,0 +1,416 @@
+\section{Definitions}
+
+\subsection{Series}
+
+\subsubsection{Definition of a series (Def 1.3)}
+
+Let \(\left( a_n \right)_{n=1}^{\infty}\) be a sequence. Then, the series \(\sum_{n=1}^{\infty} a_n\) is defined as:
+\[
+    \sum_{n = 1}^{\infty} a_n = \lim_{n \rightarrow +\infty} S_n
+\]
+
+where $S_n$ is the $n$-th partial sum of \(\left( a_n \right)\), i.e.
+
+\[
+    S_n = \sum_{k = 1}^{n}a_k
+\]
+
+\subsubsection{Definition of a convergent and divergent series (Def 1.4)}
+
+Let \((a_n)_{n=1}^{\infty}\) be a sequence
+Then, the series \(\sum_{n=1}^{\infty} a_n\) is called:
+
+\begin{itemize}
+    \item \textbf{Convergent (to \(S\))} if
+    \[
+        \lim_{n \to +\infty} S_n = S \in \mathbb{R},
+    \]
+    where
+    \[
+        S_n = a_1 + a_2 + \dots + a_n
+    \]
+    is the \(n\)-th partial sum.
+
+    \item \textbf{Divergent (to \(\pm \infty\))} if
+    \[
+        \lim_{n \to +\infty} S_n = \pm \infty.
+    \]
+
+    \item \textbf{Divergent} if
+    \[
+        \lim_{n \to +\infty} S_n \text{ does not exist}.
+    \]
+\end{itemize}
+
+\subsubsection{Definition of the tail of a convergent series (Def 1.5)}
+
+Let $\sum_{n=1}^\infty a_n = S$ be a \textit{convergent} series, and let $S_n = \sum_{k=1}^n a_k$ be its $n$-th partial sum.
+Then, we have
+\[S = S_n + r_n, \quad \forall n \in \mathbb{N},
+\]
+where the sequence $\{r_n\}_{n=1}^\infty$ is defined as
+\[
+    r_n = \sum_{k=n+1}^\infty a_k,
+\]
+and is called the \textit{tail} (or the \textit{remainder}) of the series $\sum_{n=1}^\infty a_n$.
+
+\subsubsection{Definition of absolutely and conditionally convergent series (Def 3.1)}
+
+A series $\sum_{k=1}^\infty a_k$ is called:
+\begin{itemize}
+    \item \textit{absolutely convergent} if the series $\sum_{k=1}^\infty |a_k|$ converges.
+    \item \textit{conditionally convergent} if it converges but the series $\sum_{k=1}^\infty |a_k|$ diverges.
+\end{itemize}
+
+\subsubsection{Definition of the Cauchy product of two series (Def 4.1)}
+
+Let $\sum_{k=1}^\infty a_k$ and $\sum_{k=1}^\infty b_k$ be two series
+
+\vspace{1em}
+
+The \textit{Cauchy product} of these two series is defined as:
+\[
+    \left( \sum_{k=1}^\infty a_k \right) \cdot \left( \sum_{k=1}^\infty b_k \right) \overset{\text{def}}{=} \sum_{k=1}^\infty c_k
+\]
+where
+\[
+    c_k = a_1 b_k + a_2 b_{k-1} + \cdots + a_k b_1
+\]
+
+\clearpage
+
+\subsection{Functional sequences and series}
+
+\subsubsection{Definition of the pointwise convergence of a sequence/series (Def 5.2)}
+
+Let $E \subseteq \mathbb{R}$, and $f_n: E \to \mathbb{R}$, $n \in \mathbb{N}$.
+
+\begin{enumerate}
+    \item The sequence $\{f_n(x)\}_{n=1}^\infty$ \textit{converges pointwise} to a function $f: E \to \mathbb{R}$ (notation: $f_n \xrightarrow{E} f$) on the set $E$ if
+    \[
+        \lim_{n \to \infty} f_n(x) = f(x) \quad \text{for every } x \in E.
+    \]
+    That is,
+    \[
+        \left(f_n \xrightarrow{E} f\right) \iff
+        \left(\forall x \in E \,\, \forall \varepsilon > 0 \,\, \exists N(E, x) \in \mathbb{N} \,\,
+        \forall n \geq N(E, x) \implies |f_n(x) - f(x)| < \varepsilon \right).
+    \]
+
+    \item The series $\sum_{k=1}^\infty f_k(x)$ \textit{converges pointwise} to a function $f: E \to \mathbb{R}$ (notation: $\sum_{k=1}^\infty f_k \xrightarrow{E} f$) on the set $E$ if the sequence of partial sums
+    \[
+        S_n(x) = \sum_{k=1}^n f_k(x), \quad \{S_n(x)\}_{n=1}^\infty,
+    \]
+    converges pointwise to $f$.
+\end{enumerate}
+
+\subsubsection{Definition of the uniform convergence of a sequence/series (Def 5.3)}
+
+Let $E \subseteq \mathbb{R}$, and $f_n : E \to \mathbb{R}$, $n \in \mathbb{N}$.
+
+\begin{enumerate}
+    \item The functional sequence $\{f_n(x)\}_{n=1}^\infty$ is called \textit{uniformly convergent} to a function $f(x)$ on a set $E$ (notation:
+    \[
+        f_n \mathrel{\substack{\xrightarrow{\text{E}} \\[-0.3em] \xrightarrow{\text{}}}} f
+    \]
+    ) if
+    \[
+        \lim_{n \to \infty} \sup_{x \in E} \left| f_n(x) - f(x) \right| = 0.
+    \]
+    That is,
+    \[
+        \left(f_n \mathrel{\substack{\xrightarrow{\text{E}} \\[-0.3em] \xrightarrow{\text{}}}} f\right) \iff
+        \left(\forall \varepsilon > 0 \,\, \exists N(\varepsilon) \in \mathbb{N} \, \,
+        \forall n \geq N(\varepsilon) \,\, \forall x \in E \implies |f_n(x) - f(x)| < \varepsilon\right).
+    \]
+
+    \item The functional series $\sum_{k=1}^\infty f_k(x)$ is called \textit{uniformly convergent} to a function $f(x)$ on a set $E$ (notation:
+    \[\sum_{k=1}^\infty f_k \mathrel{\substack{\xrightarrow{\text{E}} \\[-0.3em] \xrightarrow{\text{}}}} f
+    \]) if the sequence of its partial sums
+    \[
+        S_n(x) = \sum_{k=1}^n f_k(x), \quad \{S_n(x)\}_{n=1}^\infty,
+    \]
+    converges uniformly to $f(x)$ on $E$.
+
+    Definition (2) means that, in order to converge uniformly on $E$, the functions $f_n(x)$ ought to be inside the $\varepsilon$-neighborhood of $f(x)$ for all $n \geq N(\varepsilon)$ and for all $x \in E$.
+\end{enumerate}
+
+\subsubsection{Definition of a power series (Def 7.1)}
+
+A functional series of the form
+\[
+    \sum_{k=0}^\infty a_k (x - x_0)^k = a_0 + a_1 (x - x_0) + a_2 (x - x_0)^2 + \cdots + a_k (x - x_0)^k + \cdots
+\]
+is called a \textit{power series centered at} $x_0$.
+
+Here, $x_0 \in \mathbb{R}$ is called the \textit{center of the series}, and $a_k \in \mathbb{R}, \, k \in \mathbb{N} \cup \{0\}$ are the \textit{coefficients of the series}.
+
+Since, by the linear substitution $t = x - x_0$, the power series $\sum_{k=0}^\infty a_k (x - x_0)^k$ can be written as a power series centered at $0$:
+\[
+    \sum_{k=0}^\infty a_k t^k = a_0 + a_1 t + a_2 t^2 + \cdots + a_k t^k + \cdots,
+\]
+\textit{without loss of generality}, we can study only power series of the form
+\[
+    \sum_{k=0}^\infty a_k t^k.
+\]
+
+\subsubsection{Definition of the radius of convergence and the interval of convergence of a power series (Def 7.2)}
+
+Let
+\[
+    D = \{x \in \mathbb{R} \mid \sum_{k=0}^\infty a_k x^k \text{ converges} \} \subseteq \mathbb{R}.
+\]
+That is, $D$ is the \textit{set of all points of convergence} of $\sum_{k=0}^\infty a_k x^k$.
+
+Then, $R = \sup \{|x| \mid x \in D\}$ is called the \textit{radius of convergence} of the power series $\sum_{k=0}^\infty a_k x^k$. The set $D$ is called the \textit{interval of convergence} of the power series $\sum_{k=0}^\infty a_k x^k$.
+
+\textbf{Note:} Since $0 \in D$, we have $D \neq \emptyset$, which implies that $R = \sup \{|x| \mid x \in D\}$ exists.
+
+\subsubsection{Definition of the Taylor series (Def 8.2)}
+
+Let $I \subseteq \mathbb{R}$ be an \textit{open interval}, and let a function $f: I \to \mathbb{R}$ be \textit{smooth} at a point $\lambda \in I$ (i.e., $f \in C^\infty(\{\lambda\})$).
+
+Then, the \textit{Taylor series} of the function $f(x)$ at the point $\lambda$ (denoted $T_{f, \lambda}(x)$) is the power series of the form
+\[
+    T_{f, \lambda}(x) = \sum_{k=0}^\infty \frac{f^{(k)}(\lambda)}{k!} (x - \lambda)^k.
+\]
+
+In expanded form:
+\[
+    T_{f, \lambda}(x) = f(\lambda) + f'(\lambda)(x - \lambda) + \frac{f''(\lambda)}{2!}(x - \lambda)^2 + \cdots
+\]
+
+The coefficients $\frac{f^{(k)}(\lambda)}{k!}$ are called the \textit{Taylor coefficients}.
+
+\subsubsection{Definition of an analytic and smooth function (Def 8.1 and Def 8.3)}
+
+Let $n \in \mathbb{N} \cup \{0\}$ and $I \subseteq \mathbb{R}$ be an \textit{open interval}. Then, a function $f: I \to \mathbb{R}$ is said to be:
+\begin{enumerate}
+    \item \textit{$n$-differentiable} on a set $E \subseteq I$ if the derivatives
+    \[
+        f^{0} = f, \, f', \, f'', \dots, \, f^{(n)}
+    \]
+    exist at every point of $E$.
+
+    \item Of \textit{differentiability class} $C^n(E)$ if the derivatives
+    \[
+        f^{0} = f, \, f', \, f'', \dots, \, f^{(n)}
+    \]
+    exist and are \textit{continuous} at every point of $E$.
+
+    \item \textit{Smooth} (or infinitely differentiable) on $E$, denoted $f \in C^\infty(E)$, if it has derivatives of \textit{all orders} at every point of $E$.
+\end{enumerate}
+
+It ought to be clear that (see Calculus-1):
+\[
+    C^k(E) \subset C^{k-1}(E), \quad C^k(E) \neq C^{k-1}(E), \quad \text{and} \quad C^\infty(E) = \bigcap_{k=1}^\infty C^k(E).
+\]
+
+Def 8.3:
+Let $I \subseteq \mathbb{R}$ be an \textit{open interval}. Then a function $f: I \to \mathbb{R}$ is said to be \textit{analytic} at a point $\lambda \in I$, denoted $f \in C^\omega(\{\lambda\})$, if there is a sequence $\{a_k\}_{k=0}^\infty \subseteq \mathbb{R}$ and $\delta > 0$ such that
+\[
+    f(x) = \sum_{k=0}^\infty a_k (x - \lambda)^k, \quad \forall x \in (\lambda - \delta, \lambda + \delta).
+\]
+
+That is, a function $f$ is \textit{analytic at a point} $\lambda \in I$ if it can be given by a \textit{convergent power series centered at} $\lambda$ in some \textit{neighborhood of} $\lambda$.
+
+A function $f$ is \textit{analytic on an open interval} $J \subseteq I$, if it is analytic at \textit{every point} $\lambda \in J$.
+
+\clearpage
+
+\subsection{Multiple Riemann Integral}
+
+\subsubsection{Definition of the mesh of a partition of an interval (Def 9.7)}
+
+Let $P$ be a partition of an interval $I$ (see Def 9.4 on page 9). Then, the \textit{maximum} among the diameters of the intervals $I_{i_1, i_2, \dots, i_n}$ of the partition $P$ is called the \textit{mesh} of the partition $P$ and is denoted by $\lambda(P)$.
+
+That is,
+\[
+    \lambda(P) = \max \{d(I_{i_1, i_2, \dots, i_n}) \mid i_1 \in \{1, \dots, t_1\}, \, i_2 \in \{1, \dots, t_2\}, \dots, \, i_n \in \{1, \dots, t_n\} \},
+\]
+where $d(I_{i_1, i_2, \dots, i_n})$ is the diameter of the interval $I_{i_1, i_2, \dots, i_n}$.
+
+\subsubsection{Definition of the Riemann sum (Def 9.8)}
+
+Let:
+\begin{itemize}
+    \item $I$ be an \textit{interval} defined by Equality (1);
+    \item $(P, \mathcal{Z}^*)$ be a \textit{tagged partition} of $I$ (see Def 9.5);%
+    \footnote{Note: In Mazhuga's notation, $\mathcal{Z}$ denotes a different variable. (Да я просто хз как это написать)}
+    \item $|I_{i_1 i_2 \dots i_n}|$ be the \textit{measure} of an interval $I_{i_1 i_2 \dots i_n}$ from the partition $(P, \mathcal{Z}^*)$ (see Def 9.2);
+    \item $f: I \to \mathbb{R}$ be a \textit{function}.
+\end{itemize}
+
+Then, the sum
+\[
+    \sigma(f, P, \mathcal{Z}^*) \overset{\text{def}}{=}
+    \sum_{i_1 = 1}^{t_1} \sum_{i_2 = 1}^{t_2} \cdots \sum_{i_n = 1}^{t_n} f(z_{i_1 i_2 \dots i_n}) \cdot |I_{i_1 i_2 \dots i_n}|
+\]
+is called the \textit{Riemann sum} (of the function $f$ corresponding to the tagged partition $(P, \mathcal{Z}^*)$ of the interval $I$).
+
+\noindent \textit{The following are the definitions used in Def 9.8: Definitions 9.1, 9.2, and 9.5.}
+
+\vspace{1em}
+
+\subsection*{Definition 9.1}
+The set
+\[
+    I = \{ \vec{x} \in \mathbb{R}^n \mid a_i < x_i < b_i, \, i = 1, 2, \dots, n \}
+    = [a_1, b_1] \times [a_2, b_2] \times \cdots \times [a_n, b_n],
+\]
+where $\vec{x} = (x_1, \dots, x_n)$, $\vec{a} = (a_1, \dots, a_n)$, $\vec{b} = (b_1, \dots, b_n) \in \mathbb{R}^n$,
+is called a \textit{(nondegenerative $n$-dimensional closed) interval}.
+
+\vspace{1em}
+
+\subsection*{Definition 9.2}
+Let an interval $I$ be defined by Equality (1).
+Then, the value
+\[
+    |I| \overset{\text{def}}{=} \prod_{i=1}^n (b_i - a_i)
+\]
+is called the \textit{measure} (or $n$-\textit{measure} or $n$-\textit{volume}) of the interval $I$.
+
+\vspace{1em}
+
+\subsection*{Definition 9.5}
+Let $P$ be a \textit{partition} of an interval $I$ into finer intervals $I_{i_1, i_2, \dots, i_n}$ (see Def 9.4 on page 9).
+If in every interval $I_{i_1, i_2, \dots, i_n}$ we fix a point $z_{i_1, i_2, \dots, i_n} \in I_{i_1, i_2, \dots, i_n}$, then, we say that we have a \textit{tagged partition} (or a \textit{partition with distinguished points}).
+
+The set of all $t_1 t_2 \cdots t_n$ many points $z_{i_1, i_2, \dots, i_n}$ we will denote by the single letter $\mathcal{Z}$, and the tagged partition of $I$ we will denote by $(P, \mathcal{Z})$.
+
+\subsubsection{Definition of the miltiple Riemann integral over an interval (Def 9.9)}
+
+Let $I$ be an interval defined by Equality (see Def 9.4), and let $f: I \to \mathbb{R}$ be a function.
+
+We say that the (multiple) \textit{Riemann integral} of the function $f$ over the interval $I$ (denoted by \(\int_I f(\overline{x}) \, d\overline{x}\)) exists and equals $s$ if, for every $\varepsilon > 0$, there exists $\delta > 0$ such that for any tagged partition $(P, \mathcal{Z})$ of the interval $I$ whose mesh (i.e., \(d(P)\)) is less than $\delta$, we have:
+\[
+    |\sigma(f, P, \mathcal{Z}) - s| < \varepsilon,
+\]
+where \(\sigma(f, P, \mathcal{Z})\) is the \textit{Riemann sum} (see Def 9.8).
+
+That is,
+\[
+    \int_I f(\overline{x}) \, d\overline{x} = s \iff
+    \left(\exists \lim_{\lambda(P) \to 0} \sigma(f, P, \mathcal{Z}) = s \right),
+\]
+or equivalently:
+\[
+    \forall \varepsilon > 0 \, \exists \delta(\varepsilon) > 0 \, \forall (P, \mathcal{Z}) \,
+    \left[ d(P) < \delta \implies |\sigma(f, P, \mathcal{Z}) - s| < \varepsilon \right].
+\]
+
+\begin{itemize}
+    \item If this limit exists, we say that the function $f: I \to \mathbb{R}$ is \textit{Riemann integrable} over the interval $I$.
+    \item The set of all Riemann integrable functions over the interval \(I \subseteq \mathbb{R}^n\) shall be denoted by \(\mathcal{R}(I)\).
+\end{itemize}
+
+\subsubsection{Definition of a set of the Lebesgue measure zero (Def 9.10)}
+
+A set $E \subseteq \mathbb{R}^n$ has \textit{(n-dimensional) Lebesgue measure zero} if for every $\varepsilon > 0$, there exists at most a countable system $\{I_i\}$ of $n$-dimensional intervals $I_i$ (see Def 9.1) such that
+\[
+    E \subseteq \bigcup_i I_i \quad \text{and} \quad \sum_i |I_i| \leq \varepsilon,
+\]
+where $|I_i|$ is the \textit{measure of} $I_i$ (see Def 9.2).
+
+\begin{itemize}
+    \item If $E \subseteq \mathbb{R}^n$ is a set of Lebesgue measure zero, we denote this by
+    \[
+        \mu(E) = 0.
+    \]
+    \item Note that, since the series $\sum_i |I_i|$ converges absolutely (by Claim 3.9), the exact order of summation does not affect the sum, so that \textbf{Def 9.10} is unambiguous.
+\end{itemize}
+\subsection*{1.18 The Cauchy rearrangement theorem (Claim 3.9)}
+
+
+\begin{claim}[Cauchy's Rearrangement Theorem]
+    Let $\sum_{k=1}^\infty a_k$ be an \textit{absolutely convergent} series.
+
+    Then, for any permutation $\tau : \mathbb{N} \to \mathbb{N}$, we have
+    \[
+        \sum_{k=1}^\infty a_{\tau(k)} = \sum_{k=1}^\infty a_k.
+    \]
+\end{claim}
+
+\subsubsection{Definition of the lower and upper Darboux sum (Def 9.11)}
+
+Let:
+\begin{itemize}
+    \item $I$ be an interval defined by Definition 9.1;
+    \item $P$ be a partition of the interval $I$ defined as in Definition 9.4;
+    \item $f: I \to \mathbb{R}$ be a function on $I$;
+    \item $m_{i_1 i_2 \dots i_n} \overset{\text{def}}{=} \inf_{x \in I_{i_1 i_2 \dots i_n}} f(x)$ and $M_{i_1 i_2 \dots i_n} \overset{\text{def}}{=} \sup_{x \in I_{i_1 i_2 \dots i_n}} f(x)$.
+\end{itemize}
+
+Then, the quantities:
+\[
+    \mathcal{S}(f, P) \overset{\text{def}}{=} \sum_{i_1=1}^{t_1} \sum_{i_2=1}^{t_2} \cdots \sum_{i_n=1}^{t_n} \left( m_{i_1 i_2 \dots i_n} \cdot |I_{i_1 i_2 \dots i_n}| \right)
+\]
+and
+\[
+    \overline{\mathcal{S}}(f, P) \overset{\text{def}}{=} \sum_{i_1=1}^{t_1} \sum_{i_2=1}^{t_2} \cdots \sum_{i_n=1}^{t_n} \left( M_{i_1 i_2 \dots i_n} \cdot |I_{i_1 i_2 \dots i_n}| \right)
+\]
+are called the \textit{lower Darboux sum} and the \textit{upper Darboux sum} (of the function $f$ over the interval $I$ corresponding to the partition $P$ of the interval).
+
+\subsection*{Definition 9.4 (Проверить!)}
+
+
+Let an interval $I$ be defined by Equality (1).
+Then, partitions of the coordinate intervals $[a_i, b_i]$, $i=1, \dots, n$, induce a partition of the interval $I$ into finer intervals obtained as the direct products of the intervals of the partitions of the coordinate intervals. More precisely:
+
+Let
+\[
+    I = [a_1, b_1] \times [a_2, b_2] \times \cdots \times [a_n, b_n]
+\]
+be defined by Equality (1).
+Then, partitions of the coordinate intervals $[a_i, b_i]$:
+\begin{itemize}
+    \item $P_1: a_1 = x_{10} < x_{11} < \cdots < x_{1t_1} = b_1$ \hfill (partition of $[a_1, b_1]$),
+    \item $P_2: a_2 = x_{20} < x_{21} < \cdots < x_{2t_2} = b_2$ \hfill (partition of $[a_2, b_2]$),
+    \item \dots,
+    \item $P_n: a_n = x_{n0} < x_{n1} < \cdots < x_{nt_n} = b_n$ \hfill (partition of $[a_n, b_n]$),
+\end{itemize}
+induce a partition of $I$ into $t_1 t_2 \cdots t_n$ many intervals
+\[
+    I_{i_1, i_2, \dots, i_n} = [x_{1(i_1-1)}, x_{1i_1}] \times [x_{2(i_2-1)}, x_{2i_2}] \times \cdots \times [x_{n(i_n-1)}, x_{ni_n}] \subseteq \mathbb{R}^n.
+\]
+
+The representation of the interval $I$ as the union
+\[
+    I = \bigcup_{i_1 = 1}^{t_1} \bigcup_{i_2 = 1}^{t_2} \cdots \bigcup_{i_n = 1}^{t_n} I_{i_1, i_2, \dots, i_n}
+\]
+of finer intervals $I_{i_1, i_2, \dots, i_n}$ just described will be called a \textit{partition on the (n-dimensional) interval} $I$, and will be denoted by $P$.
+
+\subsubsection{Definition of the lower and upper Darboux integral (Def 9.12)}
+
+Let $I$ be an interval defined by Equality (1) and let $f: I \to \mathbb{R}$ be a function on $I$.
+
+Then, the \textit{lower Darboux integral} and the \textit{upper Darboux integral} (of the function $f$ over the interval $I$) are respectively defined to be:
+\[
+    \int_I f(x) \, dx = \mathcal{L}(f) \overset{\text{def}}{=} \sup_P \mathcal{S}(f, P)
+    \quad \text{and} \quad
+    \int_I f(x) \, dx = \mathcal{U}(f) \overset{\text{def}}{=} \inf_P \overline{\mathcal{S}}(f, P),
+\]
+where $\mathcal{S}(f, P)$ and $\overline{\mathcal{S}}(f, P)$ are the lower and upper Darboux sums (see Def 9.11), and the supremum and infimum are taken over \textit{all partitions} $P$ of the interval $I$.
+
+\begin{itemize}
+    \item It should be clear that, by Def 9.11 and Def 9.12, for any partition $P$ of $I$, we have
+    \[
+        \mathcal{S}(f, P) \leq \mathcal{L}(f) \leq \mathcal{U}(f) \leq \overline{\mathcal{S}}(f, P).
+    \]
+\end{itemize}
+
+\subsubsection{Definition of an admissible set (see your notes of Lecture 10) (взято с кнада, хз то ли)}
+
+\textbf{Определение} Пусть $E$ — допустимое множество (\textit{admissible set}), $f: E \to \mathbb{R}$. Тогда интегралом функции $f$ по $E$ называется
+\[
+    \int_E f(x) \, dx = \int_{I \supseteq E} f(x) \cdot \chi_E(x) \, dx,
+\]
+где $I$ — произвольный замкнутый брусок, содержащий $E$,
+$\chi_E(x) = 1$ при $x \in E$ и $\chi_E(x) = 0$ при $x \notin E$.
+
+Если интеграл справа существует, то говорят, что функция $f$ интегрируема на $E$.
+
+\subsubsection{Definition of the miltiple Riemann integral over an admissible set (see your notes of Lecture 10) (хз где взять, мб кнад)}
+
+\clearpage

@@ -1,0 +1,333 @@
+\section{Simple Proofs}
+
+\subsection{Series}
+
+\subsubsection{The Cauchy criterion for series (Claim 1.2)}
+
+
+\subsection*{Proof}
+Let $\sum_{n=1}^\infty a_n$ be the initial series and $\sum_{n=1}^\infty b_n$ be the series obtained from $\sum_{n=1}^\infty a_n$ by changing a finite number of terms.
+
+Then, it is clear that $\exists N \in \mathbb{N}$ such that $\forall n \geq N$, we have $a_n = b_n$.
+
+Therefore, for every $n \geq N$, we have
+\[
+A_n - B_n = A_N - B_N,
+\]
+where $A_k = \sum_{i=1}^k a_i$ and $B_k = \sum_{i=1}^k b_i$ are the $k$-th partial sums.
+
+That is,
+\[
+\lim_{n \to \infty} (A_n - B_n) = A_N - B_N \in \mathbb{R},
+\]
+which does not depend on $n$.
+
+By limit laws for sequences (see Calculus I), it follows that
+\[
+\exists \lim_{n \to \infty} A_n \quad \text{and} \quad \exists \lim_{n \to \infty} B_n,
+\]
+or equivalently,
+\[
+\lim_{n \to \infty} A_n \quad \text{and} \quad \lim_{n \to \infty} B_n \quad \text{exist}.
+\]
+
+Now, $A_N - B_N$ concludes the proof.
+
+\subsection*{Definition 4}
+Let $(a_n)_{n=1}^\infty$ be a sequence. Then, the series $\sum_{n=1}^\infty a_n$ is called:
+\begin{itemize}
+    \item \textbf{Convergent} (to $S$) if $\lim_{n \to \infty} S_n = S \in \mathbb{R}$, where $S_n = a_1 + \cdots + a_n$ is the $n$-th partial sum.
+    \item \textbf{Divergent to $\pm \infty$} if $\lim_{n \to \infty} S_n = \pm \infty$.
+    \item \textbf{Divergent} if $\lim_{n \to \infty} S_n$ does not exist.
+\end{itemize}
+
+\subsubsection{The necessary condition for convergence (Claim 1.5 + Claim 1.2)}
+\textbf{Claim 5 [Necessary condition for convergence]} 
+
+Let $\sum_{n=1}^\infty a_n$ be a series. 
+
+Then, 
+\[
+\left( \sum_{n=1}^\infty a_n \text{ converges} \right) \implies \left( \lim_{n \to \infty} a_n = 0 \right).
+\]
+
+Note that Claim 4.2 shows that the converse does not hold (indeed, $\lim_{n \to \infty} \frac{1}{n} = 0$ but $\sum_{n=1}^\infty \frac{1}{n}$ diverges).
+
+\textbf{Proof}
+
+Follows directly from Claim 2 if we set $x = 1$.
+
+\bigskip
+
+\textbf{Claim 2 [Cauchy’s Criterion for series]} 
+
+Let $\sum_{k=1}^\infty a_k$ be a series.
+
+Then,
+\[
+\left( \sum_{k=1}^\infty a_k \text{ converges} \right) \iff \left( \forall \varepsilon > 0 \; \exists N(\varepsilon) \in \mathbb{N} : \forall m, k \in \mathbb{N}, \; m \geq N(\varepsilon) \implies \left| \sum_{n=m+1}^{m+k} a_n \right| < \varepsilon \right).
+\]
+
+\textbf{Proof}
+
+\[
+\left( \sum_{n=1}^\infty a_n \text{ converges} \right) \iff \left( \exists \lim_{n \to \infty} A_n \right) \quad \text{(where } A_N = \sum_{n=1}^N a_n \text{)}.
+\]
+
+This follows from Cauchy’s criterion for sequences (see Calculus I). 
+
+Thus,
+\[
+\forall \varepsilon > 0 \; \exists N(\varepsilon) \in \mathbb{N} : \forall m, k \in \mathbb{N}, \; m \geq N(\varepsilon) \implies \left| A_{m+k} - A_m \right| < \varepsilon.
+\]
+
+Since 
+\[
+A_{m+k} - A_m = \left( a_1 + \cdots + a_{m+k} \right) - \left( a_1 + \cdots + a_m \right) = a_{m+1} + \cdots + a_{m+k},
+\]
+we have 
+\[
+\left| A_{m+k} - A_m \right| = \left| \sum_{n=m+1}^{m+k} a_n \right|.
+\]
+
+Thus, the claim is proved.
+
+\subsubsection{The Cauchy condensation test (Claim 2.3)}
+\textbf{Claim 2.3 [Cauchy Condensation Test]}
+
+Let $\{a_k\}_{k=1}^\infty$ be a sequence such that:
+\begin{itemize}
+    \item[(a)] $a_k \geq 0 \quad \forall k \in \mathbb{N}$ \hfill \textit{(that is, $\{a_k\}_{k=1}^\infty$ is nonnegative)}
+    \item[(b)] $a_{k+1} \leq a_k \quad \forall k \in \mathbb{N}$ \hfill \textit{(that is, $\{a_k\}_{k=1}^\infty$ is nonincreasing)}
+\end{itemize}
+
+Then,
+\[
+\left( \sum_{k=1}^\infty a_k \text{ converges} \right) \iff \left( \sum_{k=0}^\infty 2^k a_{2^k} \text{ converges} \right).
+\]
+
+The series 
+\[
+a_1 + 2a_2 + 4a_4 + 8a_8 + \cdots + 2^k a_{2^k} + \cdots
+\]
+is called the \emph{condensed series}.
+\textbf{Proof}
+
+Since $a_{k+1} \leq a_k$, for every $k \in \mathbb{N} \cup \{0\}$ we have:
+\[
+a_2 \leq a_1, \quad 2a_4 \leq a_3 + a_4 \leq 2a_2, \quad 4a_8 \leq a_5 + a_6 + a_7 + a_8 \leq 4a_4,
+\]
+\[
+\ldots, \quad 2^n a_{2^n+1} \leq a_{2^{n+1}} + \ldots + a_{2^n+1} \leq 2^n a_{2^n}.
+\]
+
+By adding these inequalities, we obtain the inequality:
+\[
+a_2 + 2a_4 + 4a_8 + \ldots + 2^n a_{2^n+1} \leq \sum_{k=1}^{2^n+1} a_k \leq a_1 + 2a_2 + 4a_4 + \ldots + 2^n a_{2^n}.
+\]
+
+Let $S_n = a_1 + 2a_2 + 4a_4 + \ldots + 2^n a_{2^n}$ be the $n$-th partial sum of the condensed series $\sum_{k=0}^\infty 2^k a_{2^k}$, and let $A_n = a_1 + \ldots + a_n$ be the $n$-th partial sum of the series $\sum_{k=1}^\infty a_k$.
+
+Then Inequality $2.1$ can be rewritten as:
+\[
+\frac{1}{2}(S_{n+1} - a_1) \leq A_{2^{n+1}} - a_1 \leq S_n. \tag{2.2}
+\]
+
+Since the sequences $\{A_n\}_{n=1}^\infty$ and $\{S_n\}_{n=1}^\infty$ are nondecreasing, Inequality $(2.2)$ implies that:
+\[
+\left(\{A_n\}_{n=1}^\infty \text{ is bounded}\right) \iff \left(\{S_n\}_{n=1}^\infty \text{ is bounded}\right),
+\]
+\[
+\iff \left(\sum_{k=1}^\infty a_k \text{ converges}\right) \iff \left(\sum_{k=0}^\infty 2^k a_{2^k} \text{ converges}\right).
+\]
+
+\textbf{Claim 2.2}
+
+Let $a_n \geq 0 \; \forall n \in \mathbb{N}$. Then:
+\[
+\left( \sum_{k=1}^\infty a_k \text{ is convergent} \right) \iff \left( \{A_n = \sum_{k=1}^n a_k\}_{n=1}^\infty \text{ is bounded} \right).
+\]
+
+By definition, $\{b_n\}_{n=1}^\infty$ is bounded if $\exists M > 0 \; \forall n : |b_n| < M$.
+
+\subsubsection{The first comparison test (Claim 2.4)}
+Let $\{a_k\}_{k=1}^\infty$ and $\{b_k\}_{k=1}^\infty$ be two sequences such that $0 \leq a_k \leq b_k$ for all $k \in \mathbb{N}$.
+
+Then the following implications hold:
+1) $\left( \sum_{k=1}^\infty b_k \text{ converges} \right) \implies \left( \sum_{k=1}^\infty a_k \text{ converges} \right)$
+2) $\left( \sum_{k=1}^\infty a_k \text{ diverges} \right) \implies \left( \sum_{k=1}^\infty b_k \text{ diverges} \right)$
+
+Let $A_n = \sum_{k=1}^n a_k$ and $B_n = \sum_{k=1}^n b_k$ be the $n$-th partial sums. Since $0 \leq a_k \leq b_k$ ($\forall k \in \mathbb{N}$), it is clear that $0 \leq A_n \leq B_n$ ($\forall n \in \mathbb{N}$), and we have:
+\[
+\left( \sum_{k=1}^\infty b_k \text{ converges} \right) \implies \left( \{B_n\}_{n=1}^\infty \text{ is bounded} \right) \implies \left( \{A_n\}_{n=1}^\infty \text{ is bounded} \right) \implies \left( \sum_{k=1}^\infty a_k \text{ converges} \right).
+\]
+
+Assume that the statement is false. Then there are series $\sum_{k=1}^\infty a_k$ and $\sum_{k=1}^\infty b_k$ such that:
+\[
+\left( \sum_{k=1}^\infty a_k \text{ diverges} \right) \text{ and } \left( \sum_{k=1}^\infty b_k \text{ converges} \right).
+\]
+
+But, due to Item 1), $\left( \sum_{k=1}^\infty b_k \text{ converges} \right) \implies \left( \sum_{k=1}^\infty a_k \text{ converges} \right)$.
+
+That is, we arrived at a contradiction.
+
+Let $a_n \geq 0 \; \forall n \in \mathbb{N}$. Then:
+\[
+\left( \sum_{k=1}^\infty a_k \text{ is convergent} \right) \iff \left( \{A_n = \sum_{k=1}^n a_k\}_{n=1}^\infty \text{ is bounded} \right).
+\]
+
+By definition, $\{b_n\}_{n=1}^\infty$ is bounded if $\exists M > 0 \; \forall n : |b_n| < M$.
+
+\subsubsection{The second comparison test (Claim 2.5)}
+Let $\{a_k\}_{k=1}^\infty$ and $\{b_k\}_{k=1}^\infty$ be two sequences such that:
+\begin{itemize}
+    \item[(a)] $a_k > 0$, $b_k > 0$ \quad ($\forall k \in \mathbb{N}$),
+    \item[(b)] $\exists m > 0, \exists M > 0 : \forall n \in \mathbb{N}, \; m \leq \frac{a_k}{b_k} \leq M$.
+\end{itemize}
+
+Then:
+\[
+\left( \sum_{k=1}^\infty a_k \text{ converges} \right) \iff \left( \sum_{k=1}^\infty b_k \text{ converges} \right).
+\]
+
+\textbf{Proof}
+
+Since $b_k > 0$, we have for all $k \in \mathbb{N}$:
+\[
+\left(m b_k \leq a_k \leq M b_k\right) \implies \left(m b_k \leq a_k \quad \text{and} \quad a_k \leq M b_k\right).
+\]
+
+Therefore:
+\[
+\left(\sum_{k=1}^\infty a_k \text{ converges}\right) \implies \left(\sum_{k=1}^\infty M b_k \text{ converges}\right) \quad \text{(Item 1 of Claim 2.4 and $a_k \leq M b_k$)}.
+\]
+\[
+\left(\sum_{k=1}^\infty M b_k \text{ converges}\right) \implies \left(\sum_{k=1}^\infty b_k \text{ converges}\right) \quad \text{(Item 1 of Claim 2.4 and $M b_k \geq b_k$)}.
+\]
+\[
+\left(\sum_{k=1}^\infty b_k \text{ converges}\right) \implies \left(\sum_{k=1}^\infty m b_k \text{ converges}\right) \quad \text{(since $m > 0$ and $m b_k \leq b_k$)}.
+\]
+\[
+\left(\sum_{k=1}^\infty m b_k \text{ converges}\right) \implies \left(\sum_{k=1}^\infty a_k \text{ converges}\right) \quad \text{(Item 1 of Claim 2.4 and $m b_k \leq a_k$)}.
+\]
+
+Thus, the equivalence is proved.
+
+Let $\{a_k\}_{k=1}^\infty$ and $\{b_k\}_{k=1}^\infty$ be two sequences such that $0 \leq a_k \leq b_k$ for all $k \in \mathbb{N}$.
+
+Then the following implications hold:
+1) $\left( \sum_{k=1}^\infty b_k \text{ converges} \right) \implies \left( \sum_{k=1}^\infty a_k \text{ converges} \right)$,
+2) $\left( \sum_{k=1}^\infty a_k \text{ diverges} \right) \implies \left( \sum_{k=1}^\infty b_k \text{ diverges} \right).
+
+\subsubsection{p-Series convergence (Claim 2.7) что то не так}
+The series $\sum_{k=1}^\infty \frac{1}{k^p}$, where $p \in \mathbb{R}$, is called the $p$-series and converges if and only if $p > 1$.
+
+If $p \leq 0$, then $\lim_{k \to \infty} \frac{1}{k^p} \neq 0$. Therefore, due to the necessary condition for convergence, the series $\sum_{k=1}^\infty \frac{1}{k^p}$ diverges.
+
+If $p > 0$, then $\frac{1}{k^{p}} \leq \frac{1}{k^{p}}$ ($\forall k \in \mathbb{N}$), and all conditions of the Cauchy condensation test are satisfied. Thus, due to the condensation test, we have:
+\[
+\left(\sum_{k=1}^\infty \frac{1}{k^p} \text{ converges}\right) \iff \left(\sum_{k=0}^\infty 2^k \cdot \frac{1}{(2^k)^p} \text{ converges}\right),
+\]
+which simplifies to:
+\[
+\left(\sum_{k=0}^\infty 2^{k} \cdot 2^{-pk} \text{ converges}\right) \iff \left(\sum_{k=0}^\infty (2^{1-p})^k \text{ converges}\right).
+\]
+
+This is a geometric series, which converges if and only if $|2^{1-p}| < 1$, or equivalently:
+\[
+p > 1.
+\]
+
+
+\subsubsection{The root test (Claim 2.9) проверить}
+Let $a_k \geq 0$ $\forall k \in \mathbb{N}$. Then:
+
+1) If $\lim_{k \to \infty} a_k^{1/k} < 1$, then $\sum_{k=1}^\infty a_k$ converges.
+
+2) If $\lim_{k \to \infty} a_k^{1/k} > 1$, then $\sum_{k=1}^\infty a_k$ diverges.
+
+Let $\{b_k\}_{k=1}^\infty \subset \mathbb{R}$ be a sequence. Then:
+
+- $\limsup_{n \to \infty} b_n \overset{\text{def}}{=} \lim_{n \to \infty} (\sup_{k \geq n} b_k)$ is called the \emph{upper limit} of $\{b_k\}$.
+- $\liminf_{n \to \infty} b_n \overset{\text{def}}{=} \lim_{n \to \infty} (\inf_{k \geq n} b_k)$ is called the \emph{lower limit} of $\{b_k\}$.
+
+1) Due to the definition of the upper limit, we have:
+\[
+\left(\lim_{k \to \infty} a_k^{1/k} < 1\right) \implies \left(\exists q \in (0, 1), \exists N \in \mathbb{N}: \forall n > N \implies 0 < a_n^{1/n} < q\right).
+\]
+
+Since $q \in (0, 1)$, the series $\sum_{k=0}^\infty q^k$ converges.
+
+Therefore:
+\[
+\left(\sum_{k=0}^\infty q^k \text{ converges}\right) \iff \left(\sum_{k=N}^\infty q^k \text{ converges}\right)
+\]
+\[
+\iff \left(\sum_{k=N}^\infty a_k \text{ converges}\right) \iff \left(\sum_{k=1}^\infty a_k \text{ converges}\right).
+\]
+
+2) Due to the definition of the upper limit, we have:
+\[
+\left(\lim_{k \to \infty} a_k^{1/k} > 1\right) \implies \left(\forall N \in \mathbb{N}, \exists n > N: a_n > 1\right).
+\]
+
+This implies:
+\[
+\left(\lim_{k \to \infty} a_k \neq 0\right) \implies \left(\sum_{k=1}^\infty a_k \text{ diverges}\right).
+\]
+Changing a finite number of terms in a series does not affect its convergence (although it may change the sum of the series).
+
+Let $\{a_k\}_{k=1}^\infty$ and $\{b_k\}_{k=1}^\infty$ be two sequences such that $0 \leq a_k \leq b_k$ for all $k \in \mathbb{N}$.
+
+Then the following implications hold:
+1) $\left( \sum_{k=1}^\infty b_k \text{ converges} \right) \implies \left( \sum_{k=1}^\infty a_k \text{ converges} \right)$,
+2) $\left( \sum_{k=1}^\infty a_k \text{ diverges} \right) \implies \left( \sum_{k=1}^\infty b_k \text{ diverges} \right)$.
+
+Let $\sum_{n=1}^\infty a_n$ be a series.
+
+Then:
+\[
+\left( \sum_{n=1}^\infty a_n \text{ converges} \right) \implies \left( \lim_{n \to \infty} a_n = 0 \right).
+
+
+
+\subsubsection{The Leibniz test (Claim 3.4; prove both items)}
+
+\subsubsection{The Cauchy rearrangement theorem (Claim 3.9)}
+
+\subsubsection{The Mertens theorem (Lecture 4 notes)}
+
+\subsubsection{The Abel theorem on series products (Claim 4.3)}
+
+\clearpage
+
+\subsection{Functional Sequences and Series}
+
+\subsubsection{Relation between uniform and pointwise convergence (Claim 5.3)}
+
+
+\subsubsection{The Weierstrass M-test (Claim 5.7)}
+
+\subsubsection{The theorem on continuity of the limit function (Claim 6.2)}
+
+\subsubsection{The theorem on integration of a uniformly convergent sequence (Claim 6.5)}
+
+\subsubsection{The theorem on radius of convergence of a power series (Claim 7.1)}
+
+\subsubsection{The Cauchy-Hadamard formula (Claim 7.2)}
+
+\subsubsection{The theorem on derivative of power series (Claim 7.5)}
+
+\subsubsection{The theorem on antiderivative of power series (Claim 7.7)}
+
+\clearpage
+
+\subsection{Multiple Riemann Integral}
+
+\subsubsection{Examples of sets of the Lebesgue measure zero (Claim 9.1)}
+
+\subsubsection{Necessary condition for Riemann integrability (Claim 9.5)}
+
+\subsubsection{The Darboux criterion for Riemann integrability (for intervals) (Claim 9.6)}
+
+\clearpage
